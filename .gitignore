@@ -1,0 +1,8 @@
+##
+# Os sistema irá gerar arquivos .sql dentro das pastas existentes na pasta DB
+# deve-se criar um repositório dentro da pasta DB para monitorar as alterações
+# dos arquivos .sql com o passar do tempo
+DB/*/*.sql
+DB/.git
+DB/.git/*
+DB/.gitignore
