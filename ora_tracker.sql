@@ -21,6 +21,19 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+/*
+Leitura do arquivo de configuração com owners, objetos e demais informações
+necessárias para a geração dos scripts
+*/
 @@config/config.sql
+
+/*
+Geração do script DB/exscript.sql, que contém a chamada da criação 
+dos objetos encontrados para geração do script de cada um
+*/
 @@system/ot_export.sql
+
+/*
+Geração dos scripts dos objetos encontrados
+*/
 @@DB/exscript.sql
