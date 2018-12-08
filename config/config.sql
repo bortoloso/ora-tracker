@@ -23,16 +23,31 @@ SOFTWARE.
 */
 
 /*
+Configuração do(s) OWNER(s) dos objetos que serão esportados
+A opção All_OWNERS informa ao sistema para exportar os objetos
+de todos os owners.
+Pode-se informar mais de um owner, separando-os por vírgula.
+
+Opções:
+All_OWNERS - Exporta de todos os owners, neste caso informar somente este parâmetro, ex:
+  define OWNER_TO_EXPORT=TEST
+
+<outro valor> - Exporta somente dos owners informados, ex:
+  define OWNER_TO_EXPORT=TEST,DEV,PRD
+*/
+define OWNER_TO_EXPORT=TEST
+
+/*
 Configuração dos objetos que serão exportados
 Opções:
 N - Não exporta o objeto
 Y - Exporta o tipo de objeto
 */
-define EXPORT_TABLE=Y;
-define EXPORT_VIEW=Y;
-define EXPORT_TYPE=Y;
-define EXPORT_PROCEDURE=Y;
-define EXPORT_FUNCTION=Y;
-define EXPORT_MATERIALIZED_VIEW=Y;
-define EXPORT_TRIGGER=Y;
-define EXPORT_PACKAGE=Y;
+define EXPORT_TABLE=Y
+define EXPORT_VIEW=Y
+define EXPORT_TYPE=Y
+define EXPORT_PROCEDURE=Y
+define EXPORT_FUNCTION=Y
+define EXPORT_MATERIALIZED_VIEW=Y
+define EXPORT_TRIGGER=Y
+define EXPORT_PACKAGE=Y

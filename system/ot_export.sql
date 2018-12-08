@@ -35,13 +35,23 @@ set Trimspool on
 spool DB/exscript.sql
 
 select 'spool ../DB/'|| upper(object_type)||'/'||lower(object_name) || '.sql' || chr(13)||chr(10)||
-       'SELECT DBMS_METADATA.GET_DDL('''||object_type||''', '''||object_name||''') FROM DUAL;' || chr(13)||chr(10)||
+       'SELECT DBMS_METADATA.GET_DDL('''||object_type||''', '''||object_name||''', '''||owner||''') FROM DUAL;' || chr(13)||chr(10)||
        'spool off' ds_comando
   from (
     select object_type
          , object_name
+         , owner
       from all_objects a
-     where a.owner = (decode('&OWNER_TO_EXPORT','*',a.owner))
+     where (
+             (
+              'All_OWNERS' = upper(trim(replace('&OWNER_TO_EXPORT',',',''',''')))
+             ) or
+             (upper(a.owner) in (
+                                select upper(trim(regexp_substr('&OWNER_TO_EXPORT','[^,]+', 1, level))) from dual
+                                connect by regexp_substr('&OWNER_TO_EXPORT', '[^,]+', 1, level) is not null
+                                )
+             )
+           )
        and object_type in (
             decode(upper('&EXPORT_TABLE'),'Y','TABLE','X'),
             decode(upper('&EXPORT_VIEW'),'Y','VIEW','X'),
