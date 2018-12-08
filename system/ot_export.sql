@@ -34,8 +34,8 @@ set Trimspool on
 
 spool DB/exscript.sql
 
-select 'spool ../DB/'|| upper(object_type)||'/'||lower(object_name) || '.sql' || chr(13)||chr(10)||
-       'SELECT DBMS_METADATA.GET_DDL('''||object_type||''', '''||object_name||''', '''||owner||''') FROM DUAL;' || chr(13)||chr(10)||
+select 'spool ../DB/'|| upper(replace(object_type,' ','_'))||'/'||lower(object_name) || '.sql' || chr(13)||chr(10)||
+       'SELECT DBMS_METADATA.GET_DDL('''||replace(object_type,' ','_')||''', '''||object_name||''', '''||owner||''') FROM DUAL;' || chr(13)||chr(10)||
        'spool off' ds_comando
   from (
     select object_type
@@ -66,4 +66,5 @@ select 'spool ../DB/'|| upper(object_type)||'/'||lower(object_name) || '.sql' ||
             )
      )
   ;
+
 spool off
