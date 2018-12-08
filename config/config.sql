@@ -21,3 +21,18 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+/*
+Configuração dos objetos que serão exportados
+Opções:
+N - Não exporta o objeto
+Y - Exporta o tipo de objeto
+*/
+define EXPORT_TABLE=Y;
+define EXPORT_VIEW=Y;
+define EXPORT_TYPE=Y;
+define EXPORT_PROCEDURE=Y;
+define EXPORT_FUNCTION=Y;
+define EXPORT_MATERIALIZED_VIEW=Y;
+define EXPORT_TRIGGER=Y;
+define EXPORT_PACKAGE=Y;

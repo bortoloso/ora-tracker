@@ -6,3 +6,4 @@ DB/*/*.sql
 DB/.git
 DB/.git/*
 DB/.gitignore
+DB/exscript.sql

@@ -21,3 +21,39 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+set feedback off
+set heading off
+set termout off
+set echo off
+set verify off
+set Pagesize 0
+set linesize 1000
+set Trimspool on
+--set sqlprompt "-- > "
+
+spool DB/exscript.sql
+
+select 'spool ../DB/'|| upper(object_type)||'/'||lower(object_name) || '.sql' || chr(13)||chr(10)||
+       'SELECT DBMS_METADATA.GET_DDL('''||object_type||''', '''||object_name||''') FROM DUAL;' || chr(13)||chr(10)||
+       'spool off' ds_comando
+  from (
+    select object_type
+         , object_name
+      from all_objects a
+     where a.owner = (decode('&OWNER_TO_EXPORT','*',a.owner))
+       and object_type in (
+            decode(upper('&EXPORT_TABLE'),'Y','TABLE','X'),
+            decode(upper('&EXPORT_VIEW'),'Y','VIEW','X'),
+            decode(upper('&EXPORT_TYPE'),'Y','TYPE','X'),
+            decode(upper('&EXPORT_TYPE'),'Y','TYPE BODY','X'),
+            decode(upper('&EXPORT_PROCEDURE'),'Y','PROCEDURE','X'),
+            decode(upper('&EXPORT_FUNCTION'),'Y','FUNCTION','X'),
+            decode(upper('&EXPORT_MATERIALIZED_VIEW'),'Y','MATERIALIZED VIEW','X'),
+            decode(upper('&EXPORT_TRIGGER'),'Y','TRIGGER','X'),
+            decode(upper('&EXPORT_PACKAGE'),'Y','PACKAGE','X'),
+            decode(upper('&EXPORT_PACKAGE'),'Y','PACKAGE BODY','X')
+            )
+     )
+  ;
+spool off
