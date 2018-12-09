@@ -28,7 +28,7 @@ sqlplus /nolog @ora_tracker.sql
 
 cd DB
 
-if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ]; then
+if [ "$(git rev-parse --git-dir 2>/dev/null)" != ".git" ]; then
   git init;
 fi;
 
