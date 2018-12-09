@@ -64,7 +64,9 @@ select 'spool DB/'|| upper(replace(object_type,' ','_'))||'/'||lower(object_name
             decode(upper('&EXPORT_PACKAGE'),'Y','PACKAGE','X'),
             decode(upper('&EXPORT_PACKAGE'),'Y','PACKAGE BODY','X')
             )
+       and last_ddl_time >= to_date('&OT_DATETIME','ddmmyyyyhh24miss')
      )
   ;
 
 spool off
+

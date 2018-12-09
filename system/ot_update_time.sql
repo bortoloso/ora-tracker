@@ -23,29 +23,11 @@ SOFTWARE.
 */
 
 /*
-Leitura do arquivo de configuração com owners, objetos e demais informações
-necessárias para a geração dos scripts
+Gravar um arquivo com a última data de consulta armazenando em variável qual foi
+a data utilizada
 */
-@@config/config.sql
+spool config/ot_datetime.sql
 
-/*
-Buscar datas de atualização dos objetos para consultar objetos 
-alterados somente após a última atualização
-*/
-@@config/ot_datetime.sql
+select 'define OT_DATETIME='||to_char(sysdate,'ddmmyyyyhh24miss') from dual;
 
-/*
-Geração do script DB/exscript.sql, que contém a chamada da criação 
-dos objetos encontrados para geração do script de cada um
-*/
-@@system/ot_export.sql
-
-/*
-Geração dos scripts dos objetos encontrados
-*/
-@@DB/exscript.sql
-
-/*
-Atualiza a data de consulta dos objetos no banco
-*/
-@@system/ot_update_time.sql
+spool off
