@@ -26,3 +26,14 @@
 
 sqlplus /nolog @ora_tracker.sql
 
+cd DB
+
+if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ]; then
+  git init;
+fi;
+
+git add .
+git commit -m "$(date +"%Y.%m.%d-%H.%M.%S") - Auto committed by ORA_TRACKER"
+cd ..
+
+echo "Atualização finalizada!"
