@@ -22,16 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-set feedback off
-set heading off
-set termout off
-set echo off
-set verify off
-set Pagesize 0
-set linesize 1000
-set Trimspool on
---set sqlprompt "-- > "
-
 spool DB/exscript.sql
 
 select 'spool DB/'|| upper(replace(object_type,' ','_'))||'/'||lower(object_name) || '.sql' || chr(13)||chr(10)||

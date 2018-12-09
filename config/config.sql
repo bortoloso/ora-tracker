@@ -23,6 +23,18 @@ SOFTWARE.
 */
 
 /*
+Configuração para conexão ao banco com o sqlplus
+será montada a string de conexão no formato:
+conn ORA_USER/ORA_PASSWORD@ORA_DATABASE_ALIAS
+conn TEST/123456@XE
+
+Informar usuário e senha válidos para consulta dos objetos
+*/
+define ORA_USER=TEST
+define ORA_PASSWORD=123456
+define ORA_DATABASE_ALIAS=XE
+
+/*
 Configuração do(s) OWNER(s) dos objetos que serão esportados
 A opção All_OWNERS informa ao sistema para exportar os objetos
 de todos os owners.
