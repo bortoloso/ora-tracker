@@ -22,30 +22,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-/*
-Leitura do arquivo de configuração com owners, objetos e demais informações
-necessárias para a geração dos scripts
-*/
-@@config/config.sql
-
-/*
-Buscar datas de atualização dos objetos para consultar objetos 
-alterados somente após a última atualização
-*/
-@@config/ot_datetime.sql
-
-/*
-Geração do script DB/exscript.sql, que contém a chamada da criação 
-dos objetos encontrados para geração do script de cada um
-*/
-@@system/ot_export.sql
-
-/*
-Geração dos scripts dos objetos encontrados
-*/
-@@DB/exscript.sql
-
-/*
-Atualiza a data de consulta dos objetos no banco
-*/
-@@config/ot_update_time.sql
+define OT_DATETIME=01011000000000
