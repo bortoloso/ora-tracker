@@ -48,4 +48,4 @@ Geração dos scripts dos objetos encontrados
 /*
 Atualiza a data de consulta dos objetos no banco
 */
-@@config/ot_update_time.sql
+@@system/ot_update_time.sql
